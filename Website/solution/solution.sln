@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30523.141
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YoutubeComments", "..\YoutubeComments\YoutubeComments\YoutubeComments.csproj", "{C073B4F9-F718-4F4B-9F39-3A952B418D2B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C073B4F9-F718-4F4B-9F39-3A952B418D2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C073B4F9-F718-4F4B-9F39-3A952B418D2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C073B4F9-F718-4F4B-9F39-3A952B418D2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C073B4F9-F718-4F4B-9F39-3A952B418D2B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F3A94F86-DA66-4B2D-A4C8-EC8D258F7771}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,131 @@
+﻿@*@model IEnumerable<YoutubeComments.Models.Comments>
+*@@model PagedList.IPagedList<YoutubeComments.Models.Comments>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .pagination > li > a, .pagination > li > span {
+        color: #f2e1b4;
+    }
+</style>
+
+<hr style="border: 0" />
+
+<table class="table" style="color: #F2E1C1">
+    <tr>
+        <th style="text-align:center; font-size: 18px">
+            Number of Positive Comments
+        </th>
+        <th style="        text-align: center;
+        font-size: 18px
+">
+            Number of Negative Comments
+        <th style="        text-align: center;
+        font-size: 18px
+">
+            Number of Neutral Comments
+        </th>
+        <th style="        text-align: center;
+        font-size: 18px
+">
+            Number of Total Comments
+        </th>
+    </tr>
+
+
+    <tr>
+        <td style="text-align:center">
+            @YoutubeComments.Models.Comments.positive_number
+        </td>
+        <td style="text-align:center">
+            @YoutubeComments.Models.Comments.negative_number
+        </td>
+        <td style="text-align:center">
+            @YoutubeComments.Models.Comments.neutral_number
+        </td>
+        <td style="text-align:center">
+            @YoutubeComments.Models.Comments.total_number
+        </td>
+    </tr>
+
+
+</table>
+
+
+
+<table class="table" style="background-color: #5C527F; color: #F2E1C1">
+    <tr style="font-family:'Nirmala UI'">
+        <th style="        font-size: 24px;
+        text-align: center;
+        border-top-color: #5C527F;
+        border-right: 1px solid;
+        border-right-color: lightblue;
+    ">
+            Comment
+        </th>
+        <th style="        font-size: 18px;
+        text-align: center;
+        border-color: #5C527F
+">
+            Analysis Value
+        <th style="        font-size: 18px;
+        text-align: center;
+        border-color: #5C527F
+">
+            Analysis Result
+        </th>
+    </tr>
+    @functions{
+        public string Truncate(string value, int maxChars)
+        {
+            return value.Length <= maxChars ? value : value.Substring(0, maxChars) + "...";
+        }
+    }
+
+
+
+    @foreach (var item in Model)
+    {
+        String comment = @Truncate(item.comment.ToString(), 120);
+        <tr>
+            <td style="        font-family: 'Nirmala UI';
+        border-width: thin;
+        border-right: 1px solid;
+        border-color: lightblue;
+        font-size: 15px;
+    ">
+                @Html.DisplayFor(modelItem => comment)
+            </td>
+            <td style="        text-align: center;
+        border-color: lightblue;
+        border-right: 0px;
+        border-width: thin
+    ">
+                @Html.DisplayFor(modelItem => item.polarity)
+            </td>
+            <td style="        color: #F2E1C1;
+        text-align: center;
+        border-color: lightblue;
+        border-left: 0px;
+        border-width: thin;
+">
+                <b>@Html.DisplayFor(modelItem => item.sentimentString)</b>
+            </td>
+        </tr>
+    }
+
+</table>
+<br />
+<p style="color: #f2e1b4;">
+    <b>Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</b>
+</p>
+<p class="paginationColour">
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+</p>
+
